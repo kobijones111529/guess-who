@@ -1,12 +1,16 @@
+.picture {
+  cursor: pointer;
+}
+
 .wiggle {
   animation: wiggle linear 0.2s 2;
 }
 
-@keyframes wiggle {
-  0% {
-    transform: translateX(0);
-  }
+.hide {
+  animation: hide linear 0.5s forwards;
+}
 
+@keyframes wiggle {
   25% {
     transform: translateX(20px);
   }
@@ -14,8 +18,10 @@
   75% {
     transform: translateX(-20px);
   }
+}
 
+@keyframes hide {
   100% {
-    transform: translateX(0px);
+    opacity: 0%;
   }
 }
