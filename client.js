@@ -11,6 +11,9 @@ $(document).ready(function () {
     const index = $(e.target).index();
     if (index === state.currentPersonIndex) {
       state.currentPersonIndex = Math.floor(Math.random() * state.people.length);
+    } else {
+      $(e.target).addClass('wiggle');
+      setTimeout(() => $(e.target).removeClass('wiggle'), 400);
     }
     renderCurrentPerson();
   });
