@@ -5,6 +5,7 @@ const state = {
 };
 
 $(document).ready(function () {
+  randomizePeople();
   renderPrompt();
   renderPictures();
 
@@ -26,8 +27,9 @@ $(document).ready(function () {
         $('.picture').removeClass('hide');
 
         // Reset game
-        state.currentPersonIndex = Math.floor(Math.random() * state.people.length);
         state.guessing = true;
+        randomizePeople();
+        renderPictures();
         renderPrompt();
       }, 2000);
     } else {
@@ -39,6 +41,14 @@ $(document).ready(function () {
     renderPrompt();
   });
 });
+
+function randomizePeople() {
+  state.people = state.people
+    .map(person => [Math.random(), person])
+    .sort()
+    .map(([_, person]) => person);
+  state.currentPersonIndex = Math.floor(Math.random() * state.people.length);
+}
 
 function renderPictures() {
   const jQElem = $('#pictures');
