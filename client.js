@@ -45,7 +45,7 @@ $(document).ready(function () {
 function randomizePeople() {
   state.people = state.people
     .map(person => [Math.random(), person])
-    .sort()
+    .sort(([a, _personA], [b, _personB]) => a - b)
     .map(([_, person]) => person);
   state.currentPersonIndex = Math.floor(Math.random() * state.people.length);
 }
